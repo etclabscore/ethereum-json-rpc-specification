@@ -1649,14 +1649,6 @@
             "$ref": "#/components/schemas/Integer"
           }
         },
-        "Passphrase": {
-          "name": "passphrase",
-          "required": true,
-          "description": "passphrase for the new account",
-          "schema": {
-            "type": "string"
-          }
-        },
         "Transaction": {
           "required": true,
           "name": "transaction",
