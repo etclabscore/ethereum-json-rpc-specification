@@ -113,21 +113,6 @@
         }
       },
       {
-        "name": "eth_accounts",
-        "summary": "Returns a list of accounts owned by the client",
-        "params": [],
-        "result": {
-          "name": "addresses",
-          "schema": {
-            "description": "An array of addresses owned by the client",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Address"
-            }
-          }
-        }
-      },
-      {
         "name": "eth_blockNumber",
         "summary": "Returns the number of most recent block.",
         "params": [],
