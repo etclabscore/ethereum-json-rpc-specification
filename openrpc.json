@@ -2,8 +2,8 @@
     "openrpc": "1.0.0",
     "info": {
       "version": "1.0.0",
-      "title": "Ethereum Classic RPC",
-      "description": "This API lets you interact with the Ethereum Classic blockchain via JSON-RPC",
+      "title": "Ethereum JSON-RPC",
+      "description": "This API lets you interact with the EVM-based blockchain via JSON-RPC",
       "license": {
         "name": "Apache 2.0",
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
