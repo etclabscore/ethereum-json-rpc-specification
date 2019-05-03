@@ -9,11 +9,14 @@ Ethereum clients can expose RPC endpoints with differing method signatures; this
 Much of Ethereums effectiveness as an enterprise-grade application platform depends on its ability to provide a reliable and predictable developer experience.
 
 ## Specification
+
 You can view the specification in documentation form [here](https://playground.open-rpc.org/?uiSchema[appBar][ui:splitView]=false&schemaUrl=https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json&uiSchema[appBar][ui:logoUrl]=https://avatars1.githubusercontent.com/u/45863699?s=200&v=4) or the raw **OpenRPC Document** [here](openrpc.json).
 
-## Contributing
+### Contributing
 
 Proposals to make method changes should be [made as an issue](https://help.github.com/en/articles/creating-an-issue).
+
+How to contribute, build and release are outlined in [CONTRIBUTING.md](CONTRIBUTING.md), [BUILDING.md](BUILDING.md) and [RELEASING.md](RELEASING.md) respectively. Commits in this repository follow the [CONVENTIONAL_COMMITS.md](CONVENTIONAL_COMMITS.md) specification.
 
 ## Resources
 
