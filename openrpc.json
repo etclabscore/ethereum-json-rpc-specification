@@ -760,7 +760,7 @@
             "schema": {
               "description": "The storage keys of all the storage slots being requested",
               "items": {
-                "description": "A storage key is indexed from the solidity compiler by the order it is declaired. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimentional mappings)",
+                "description": "A storage key is indexed from the solidity compiler by the order it is declaired. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
                 "$ref": "#/components/schemas/Integer"
               }
             }
@@ -944,7 +944,7 @@
           "name": "submitHashRateSuccess",
           "schema": {
             "type": "boolean",
-            "description": "whether of not submitting went through succesfully"
+            "description": "whether of not submitting went through successfully"
           }
         }
       },
@@ -1048,7 +1048,7 @@
       },
       {
         "name": "eth_uninstallFilter",
-        "summary": "Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additonally Filters timeout when they aren't requested with eth_getFilterChanges for a period of time.",
+        "summary": "Uninstalls a filter with given id. Should always be called when watch is no longer needed. Additionally Filters timeout when they aren't requested with eth_getFilterChanges for a period of time.",
         "params": [
           {
             "name": "filterId",
@@ -1078,7 +1078,7 @@
               "$ref": "#/components/schemas/Bytes"
             },
             "info": {
-              "description": "An object contianing information about the code compilation.",
+              "description": "An object containing information about the code compilation.",
               "type": "object",
               "properties": {
                 "source": {
