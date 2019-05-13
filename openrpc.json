@@ -1706,7 +1706,7 @@
                 "description": "Block from which to end filtering events",
                 "$ref": "#/components/schemas/BlockNumber"
               },
-              "address": {
+              "addressOrArrayOfAddresses": {
                 "oneOf": [
                   {
                     "type": "string",
