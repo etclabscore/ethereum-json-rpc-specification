@@ -20,6 +20,7 @@ How to contribute, build and release are outlined in [CONTRIBUTING.md](CONTRIBUT
 
 ## Resources
 
+- [Ethereum JSON-RPC Specification walkthrough](https://www.youtube.com/watch?v=EQW_wMi4tZE0
 - @bitpshr - https://github.com/ethereum/EIPs/pull/1474
 - https://github.com/ethereum/EIPs/issues/1442
 - https://github.com/ethereum/EIPs/issues/217
