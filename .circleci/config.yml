@@ -51,6 +51,7 @@ jobs:
             curl https://www.npmjs.com/install.sh | sudo bash
       - run: npm install
       - run: npm run build
+      - run: npx semantic-release
       - run: npm run publish
 
 workflows:
