@@ -74,7 +74,3 @@ workflows:
           filters: *filter-only-master
           requires:
             - hold
-      - release-web:
-          filters: *filter-only-master
-          requires:
-            - release
