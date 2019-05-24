@@ -1,0 +1,80 @@
+version: 2
+
+aliases:
+  # -------------------------
+  #      ALIASES: Caches
+  # -------------------------
+  - &restore-deps-cache
+    key: deps-cache-{{ checksum "package.json" }}
+
+  - &save-deps-cache
+    key: deps-cache-{{ checksum "package.json" }}
+    paths:
+      - ~/ethereum-json-rpc-specification/node_modules
+
+  # -------------------------
+  #  ALIASES: Branch Filters
+  # -------------------------
+  - &filter-only-master
+    branches:
+      only: master
+  - &filter-only-semantic-pr
+    branches:
+      only:  /^(pull|fix|feat|dependabot)\/.*$/
+
+defaults: &defaults
+  working_directory: ~/ethereum-json-rpc-specification
+
+jobs:
+
+  build:
+    <<: *defaults
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run: npm install
+      - run: npm run build
+      - save_cache: *save-deps-cache
+
+  release:
+    <<: *defaults
+    docker:
+      - image: circleci/rust:1.35-stretch
+    steps:
+      - checkout
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run: npm install
+      - run: npm run build
+      - run: npx semantic-release
+      - run: npm run publish
+
+workflows:
+  version: 2
+  analysis:
+    jobs:
+      - build:
+          filters: *filter-only-semantic-pr
+
+  release:
+    jobs:
+      - build:
+          filters: *filter-only-master
+      - hold:
+          filters: *filter-only-master
+          type: approval
+          requires:
+            - build
+      - release:
+          filters: *filter-only-master
+          requires:
+            - hold
+      - release-web:
+          filters: *filter-only-master
+          requires:
+            - release

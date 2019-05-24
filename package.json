@@ -1,0 +1,33 @@
+{
+  "name": "@etclabscore/ethereum-json-rpc-specification",
+  "version": "0.0.0",
+  "description": "## Introduction",
+  "main": "index.js",
+  "scripts": {
+    "generator-client": "open-rpc-generator-client",
+    "mock-server": "open-rpc-mock-server",
+    "clean": "rm -rf build && mkdir -p build",
+    "build": "npm run clean && npm run generator-client -- --ts-name=@etclabscore/ethereum-json-rpc --rs-name=ethereum-json-rpc -o build/",
+    "publish": "npm run publish:typescript && npm run publish:rust",
+    "publish:typescript": "cd build/typescript && npm publish --access=public",
+    "publish:rust": "cd build/rust && cargo package && cargo publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etclabscore/ethereum-json-rpc-specification.git"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/etclabscore/ethereum-json-rpc-specification/issues"
+  },
+  "homepage": "https://github.com/etclabscore/ethereum-json-rpc-specification#readme",
+  "devDependencies": {
+    "@open-rpc/generator-client": "^1.8.1",
+    "@open-rpc/mock-server": "^1.1.1",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/github": "^5.2.10"
+  },
+  "dependencies": {}
+}

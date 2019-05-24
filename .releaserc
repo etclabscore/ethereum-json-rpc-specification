@@ -1,0 +1,18 @@
+{
+    "tagFormat": "${version}",
+    "branch": "master",
+    "verifyConditions": [
+        "@semantic-release/changelog",
+        "@semantic-release/git",
+        "@semantic-release/github"
+    ],
+    "publish": [
+        "@semantic-release/github"
+    ],
+    "success": [
+        "@semantic-release/github"
+    ],
+    "fail": [
+        "@semantic-release/github"
+    ]
+}
