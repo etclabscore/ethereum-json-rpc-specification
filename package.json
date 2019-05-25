@@ -10,7 +10,7 @@
     "build": "npm run clean && npm run generator-client -- --ts-name=@etclabscore/ethereum-json-rpc --rs-name=ethereum-json-rpc -o build/",
     "publish": "npm run publish:typescript && npm run publish:rust",
     "publish:typescript": "cd build/typescript && npm publish --access=public",
-    "publish:rust": "cd build/rust && cargo package && cargo publish"
+    "publish:rust": "cd build/rust && cargo package && cargo publish --token $CARGO_TOKEN"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/etclabscore/ethereum-json-rpc-specification#readme",
   "devDependencies": {
-    "@open-rpc/generator-client": "^1.8.1",
+    "@open-rpc/generator-client": "^1.8.2",
     "@open-rpc/mock-server": "^1.1.1",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
