@@ -49,6 +49,9 @@ jobs:
           command: |
             curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/ethereum-json-rpc-specification/.npmrc
       - run: npm install
       - run: npm run build
       - run: npx semantic-release
