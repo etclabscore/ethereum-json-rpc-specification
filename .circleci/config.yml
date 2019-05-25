@@ -51,7 +51,7 @@ jobs:
             curl https://www.npmjs.com/install.sh | sudo bash
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/ethereum-json-rpc-specification/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/ethereum-json-rpc-specification/.npmrc
       - run: npm install
       - run: npm run build
       - run: npx semantic-release
