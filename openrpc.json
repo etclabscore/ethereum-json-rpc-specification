@@ -1069,42 +1069,6 @@
     ],
     "components": {
       "schemas": {
-        "CodeResponse": {
-          "description": "An object containing information about the code.",
-          "type": "object",
-          "properties": {
-            "code": {
-              "description": "The compiled Byte code",
-              "$ref": "#/components/schemas/Bytes"
-            },
-            "info": {
-              "description": "An object containing information about the code compilation.",
-              "type": "object",
-              "properties": {
-                "source": {
-                  "type": "string",
-                  "description": "The sorce code that was compiled"
-                },
-                "language": {
-                  "type": "string",
-                  "description": "The language of the code that was compiled"
-                },
-                "languageVersion": {
-                  "type": "string",
-                  "description": "The language version number"
-                },
-                "compilerVersion": {
-                  "type": "string",
-                  "description": "The sorce code that was compiled"
-                },
-                "abiDefinition": {
-                  "type": "object",
-                  "description": "The application binary interface definitions of the code"
-                }
-              }
-            }
-          }
-        },
         "ProofNode": {
           "type": "string",
           "description": "An indiviual node used to prove a path down a merkle-patricia-tree",
