@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/etclabscore/ethereum-json-rpc-specification#readme",
   "devDependencies": {
-    "@open-rpc/generator-client": "^1.9.4",
+    "@open-rpc/generator-client": "^1.9.5",
     "@open-rpc/mock-server": "^1.1.1",
     "@semantic-release/changelog": "^3.0.2",
     "@semantic-release/git": "^7.0.8",
