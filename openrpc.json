@@ -1,7 +1,7 @@
 {
     "openrpc": "1.0.0",
     "info": {
-      "version": "1.0.7",
+      "version": "1.0.8",
       "title": "Ethereum JSON-RPC",
       "description": "This API lets you interact with an EVM-based client via JSON-RPC",
       "license": {
@@ -195,6 +195,7 @@
         "params": [
           {
             "name": "address",
+            "required": true,
             "description": "The address of the acccount or contract",
             "schema": {
               "$ref": "#/components/schemas/Address"
@@ -338,6 +339,7 @@
         "params": [
           {
             "name": "address",
+            "required": true,
             "description": "The address of the contract",
             "schema": {
               "$ref": "#/components/schemas/Address"
@@ -757,6 +759,7 @@
           },
           {
             "name": "storageKeys",
+            "required": true,
             "schema": {
               "description": "The storage keys of all the storage slots being requested",
               "items": {
@@ -908,6 +911,7 @@
         "params": [
           {
             "name": "signedTransactionData",
+            "required": true,
             "description": "The signed transaction data",
             "schema": {
               "$ref": "#/components/schemas/Bytes"
@@ -928,12 +932,14 @@
         "params": [
           {
             "name": "hashRate",
+            "required": true,
             "schema": {
               "$ref": "#/components/schemas/DataWord"
             }
           },
           {
             "name": "id",
+            "required": true,
             "description": "String identifiying the client",
             "schema": {
               "$ref": "#/components/schemas/DataWord"
@@ -957,12 +963,14 @@
           },
           {
             "name": "powHash",
+            "required": true,
             "schema": {
               "$ref": "#/components/schemas/PowHash"
             }
           },
           {
             "name": "mixHash",
+            "required": true,
             "schema": {
               "$ref": "#/components/schemas/MixHash"
             }
