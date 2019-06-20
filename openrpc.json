@@ -34,7 +34,7 @@
             "description": "data to hash using the Keccak-256 algorithm",
             "summary": "data to hash",
             "schema": {
-              "title": "datahash"
+              "title": "datahash",
               "type": "string",
               "pattern": "^0x[a-fA-F\\d]+$"
             }
