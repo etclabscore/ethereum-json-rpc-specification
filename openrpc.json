@@ -154,7 +154,7 @@
           "name": "chainId",
           "description": "hex format integer of the current chain id. Defaults are mainnet=61, morden=62.",
           "schema": {
-            "title": "chainID",
+            "title": "chainId",
             "type": "string",
             "pattern": "^0x[a-fA-F\\d]+$"
           }
