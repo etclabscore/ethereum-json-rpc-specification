@@ -55,7 +55,6 @@ jobs:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/ethereum-json-rpc-specification/build/typescript/.npmrc
       - run: npx semantic-release
-      - run: npm run publish
 
 workflows:
   version: 2
