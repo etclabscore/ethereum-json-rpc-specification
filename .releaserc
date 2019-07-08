@@ -1,23 +1,16 @@
 {
     "tagFormat": "${version}",
     "branch": "master",
-    "verifyConditions": [
+    "plugins": [
         "@semantic-release/changelog",
         "@open-rpc/semantic-release-plugin",
         "@semantic-release/git",
-        "@semantic-release/github"
-    ],
-    "prepare": [
-        "@semantic-release/changelog",
-        "@open-rpc/semantic-release-plugin"
-    ],
-    "publish": [
-        "@semantic-release/github"
-    ],
-    "success": [
-        "@semantic-release/github"
-    ],
-    "fail": [
-        "@semantic-release/github"
+        "@semantic-release/github",
+        [
+            "@semantic-release/exec",
+            {
+                "publishCmd": "npm run publish"
+            }
+        ]
     ]
 }
