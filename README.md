@@ -10,7 +10,7 @@ Much of Ethereums effectiveness as an enterprise-grade application platform depe
 
 ## Specification
 
-You can view the specification in documentation form [here](https://playground.open-rpc.org/?uiSchema[appBar][ui:splitView]=false&schemaUrl=https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json&uiSchema[appBar][ui:input]=false) or the raw **OpenRPC Document** [here](openrpc.json).
+You can view the specification in documentation form [here](https://playground.open-rpc.org/?schemaUrl=https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json&uiSchema[appBar][ui:input]=false) or the raw **OpenRPC Document** [here](openrpc.json).
 
 ## Clients
 
