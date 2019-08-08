@@ -19,6 +19,7 @@
           "name": "clientVersion",
           "description": "client version",
           "schema": {
+            "title": "clientVersion",
             "type": "string"
           }
         }
@@ -33,6 +34,7 @@
             "description": "data to hash using the Keccak-256 algorithm",
             "summary": "data to hash",
             "schema": {
+              "title": "datahash",
               "type": "string",
               "pattern": "^0x[a-fA-F\\d]+$"
             }
@@ -70,6 +72,7 @@
           "name": "netListeningResult",
           "description": "`true` if listening is active or `false` if listening is not active",
           "schema": {
+            "title": "isNetListening",
             "type": "boolean"
           }
         },
@@ -94,6 +97,7 @@
           "name": "quantity",
           "description": "number of connected peers.",
           "schema": {
+            "title": "numConnectedPeers",
             "description": "Hex representation of number of connected peers",
             "type": "string"
           }
@@ -108,7 +112,9 @@
           "name": "chainID",
           "description": "chain ID associated with the current network",
           "schema": {
-            "type": "string"
+            "title": "chainID",
+            "type": "string",
+            "pattern": "^0x[a-fA-F\\d]+$"
           }
         }
       },
@@ -133,8 +139,8 @@
         ],
         "result": {
           "name": "returnValue",
+          "description": "The return value of the executed contract",
           "schema": {
-            "description": "The return value of the executed contract",
             "$ref": "#/components/schemas/Bytes"
           }
         }
@@ -148,6 +154,7 @@
           "name": "chainId",
           "description": "hex format integer of the current chain id. Defaults are mainnet=61, morden=62.",
           "schema": {
+            "title": "chainId",
             "type": "string",
             "pattern": "^0x[a-fA-F\\d]+$"
           }
@@ -159,8 +166,8 @@
         "params": [],
         "result": {
           "name": "address",
+          "description": "The address owned by the client that is used as default for things like the mining reward",
           "schema": {
-            "description": "The address owned by the client that is used as default for things like the mining reward",
             "$ref": "#/components/schemas/Address"
           }
         }
@@ -175,8 +182,8 @@
         ],
         "result": {
           "name": "gasUsed",
+          "description": "The amount of gas used",
           "schema": {
-            "description": "The amount of gas used",
             "$ref": "#/components/schemas/Integer"
           }
         }
@@ -212,6 +219,7 @@
         "result": {
           "name": "getBalanceResult",
           "schema": {
+            "title": "getBalanceResult",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Integer"
@@ -239,6 +247,7 @@
             "description": "If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.",
             "required": true,
             "schema": {
+              "title": "isTransactionsIncluded",
               "type": "boolean"
             }
           }
@@ -246,6 +255,7 @@
         "result": {
           "name": "getBlockByHashResult",
           "schema": {
+            "title": "getBlockByHashResult",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Block"
@@ -269,6 +279,7 @@
             "description": "If `true` it returns the full transaction objects, if `false` only the hashes of the transactions.",
             "required": true,
             "schema": {
+              "title": "isTransactionsIncluded",
               "type": "boolean"
             }
           }
@@ -276,6 +287,7 @@
         "result": {
           "name": "getBlockByNumberResult",
           "schema": {
+            "title": "getBlockByNumberResult",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Block"
@@ -299,6 +311,7 @@
           "name": "blockTransactionCountByHash",
           "description": "The Number of total transactions in the given block",
           "schema": {
+            "title": "blockTransactionCountByHash",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Integer"
@@ -322,6 +335,7 @@
           "name": "blockTransactionCountByHash",
           "description": "The Number of total transactions in the given block",
           "schema": {
+            "title": "blockTransactionCountByHash",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Integer"
@@ -375,6 +389,7 @@
         "result": {
           "name": "logResult",
           "schema": {
+            "title": "logResult",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Log"
@@ -580,6 +595,7 @@
         "result": {
           "name": "transactionCount",
           "schema": {
+            "title": "nonceOrNull",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Nonce"
@@ -603,6 +619,7 @@
           "name": "transactionReceiptResult",
           "description": "returns either a receipt or null",
           "schema": {
+            "title": "transactionReceiptOrNull",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Receipt"
@@ -633,6 +650,7 @@
         "result": {
           "name": "uncle",
           "schema": {
+            "title": "uncleOrNull",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Uncle"
@@ -709,10 +727,11 @@
         ],
         "result": {
           "name": "uncleCountResult",
-          "description": "The Number of total uncles in the given block",
           "schema": {
+            "title": "uncleCountOrNull",
             "oneOf": [
               {
+                "description": "The Number of total uncles in the given block",
                 "$ref": "#/components/schemas/Integer"
               },
               {
@@ -733,6 +752,7 @@
         "result": {
           "name": "uncleCountResult",
           "schema": {
+            "title": "uncleCountOrNull",
             "oneOf": [
               {
                 "description": "The Number of total uncles in the given block",
@@ -761,6 +781,7 @@
             "name": "storageKeys",
             "required": true,
             "schema": {
+              "title": "storageKeys",
               "description": "The storage keys of all the storage slots being requested",
               "items": {
                 "description": "A storage key is indexed from the solidity compiler by the order it is declaired. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
@@ -775,8 +796,10 @@
         "result": {
           "name": "account",
           "schema": {
+            "title": "proofAccountOrNull",
             "oneOf": [
               {
+                "title": "proofAccount",
                 "type": "object",
                 "description": "The merkle proofs of the specified account connecting them to the blockhash of the block specified",
                 "properties": {
