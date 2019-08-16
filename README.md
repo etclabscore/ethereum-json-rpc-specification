@@ -14,7 +14,7 @@ You can view the specification in documentation form [here](https://playground.o
 
 ## Clients
 
-The clients are generated from the **OpenRPC Document** `openrpc.json` in this repository:
+The clients are generated from the **OpenRPC Document** `openrpc.json` in this repository, and can be used as an alternative to web3.js or ethers.js but for various languages:
 
 ### Javascript/Typescript
 
