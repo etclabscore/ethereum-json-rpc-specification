@@ -42,7 +42,7 @@ Proposals to make method changes should be [made as an issue](https://help.githu
 How to contribute, build and release are outlined in [CONTRIBUTING.md](CONTRIBUTING.md), [BUILDING.md](BUILDING.md) and [RELEASING.md](RELEASING.md) respectively. Commits in this repository follow the [CONVENTIONAL_COMMITS.md](CONVENTIONAL_COMMITS.md) specification.
 
 ## Resources
-
+- https://eips.ethereum.org/EIPS/eip-1901
 - [Ethereum JSON-RPC Specification walkthrough](https://www.youtube.com/watch?v=EQW_wMi4tZE0)
 - @bitpshr - https://github.com/ethereum/EIPs/pull/1474
 - https://github.com/ethereum/EIPs/issues/1442
