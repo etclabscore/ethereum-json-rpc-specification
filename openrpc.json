@@ -917,6 +917,20 @@
         }
       },
       {
+        "name": "eth_pendingTransactions",
+        "summary": "Returns the pending transactions list",
+        "params": [],
+        "result": {
+          "name": "pendingTransactions",
+          "schema": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Transaction"
+            }
+          }
+        }
+      },
+      {
         "name": "eth_protocolVersion",
         "summary": "Returns the current ethereum protocol version.",
         "params": [],
