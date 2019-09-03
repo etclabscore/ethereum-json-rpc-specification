@@ -34,7 +34,7 @@
             "description": "data to hash using the Keccak-256 algorithm",
             "summary": "data to hash",
             "schema": {
-              "title": "datahash",
+              "title": "data",
               "type": "string",
               "pattern": "^0x[a-fA-F\\d]+$"
             }
@@ -203,7 +203,7 @@
           {
             "name": "address",
             "required": true,
-            "description": "The address of the acccount or contract",
+            "description": "The address of the account or contract",
             "schema": {
               "$ref": "#/components/schemas/Address"
             }
@@ -784,7 +784,7 @@
               "title": "storageKeys",
               "description": "The storage keys of all the storage slots being requested",
               "items": {
-                "description": "A storage key is indexed from the solidity compiler by the order it is declaired. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
+                "description": "A storage key is indexed from the solidity compiler by the order it is declared. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
                 "$ref": "#/components/schemas/Integer"
               }
             }
@@ -977,7 +977,7 @@
           {
             "name": "id",
             "required": true,
-            "description": "String identifiying the client",
+            "description": "String identifying the client",
             "schema": {
               "$ref": "#/components/schemas/DataWord"
             }
@@ -1116,7 +1116,7 @@
       "schemas": {
         "ProofNode": {
           "type": "string",
-          "description": "An indiviual node used to prove a path down a merkle-patricia-tree",
+          "description": "An individual node used to prove a path down a merkle-patricia-tree",
           "$ref": "#/components/schemas/Bytes"
         },
         "AccountProof": {
