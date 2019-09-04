@@ -152,7 +152,7 @@
         "params": [],
         "result": {
           "name": "chainId",
-          "description": "hex format integer of the current chain id. Defaults are mainnet=61, morden=62.",
+          "description": "hex format integer of the current chain id. Defaults are ETC=61, ETH=1, Morden=62.",
           "schema": {
             "title": "chainId",
             "type": "string",
