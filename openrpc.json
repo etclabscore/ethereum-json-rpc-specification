@@ -943,6 +943,22 @@
         }
       },
       {
+        "name": "eth_sendTransaction",
+        "summary": "Creates new message call transaction or a contract creation, if the data field contains code.",
+        "params": [
+          {
+            "$ref": "#/components/contentDescriptors/Transaction"
+          }
+        ],
+        "result": {
+          "name": "transactionHash",
+          "schema": {
+            "description": "The transaction hash, or the zero hash if the transaction is not yet available.",
+            "$ref": "#/components/schemas/Keccak"
+          }
+        }
+      },
+      {
         "name": "eth_sendRawTransaction",
         "summary": "Creates new message call transaction or a contract creation for signed transactions.",
         "params": [
@@ -1539,7 +1555,7 @@
             "hash": {
               "$ref": "#/components/schemas/TransactionHash"
             },
-            "input": {
+            "data": {
               "type": "string",
               "description": "The data field sent with the transaction"
             },
