@@ -105,16 +105,16 @@
       },
       {
         "name": "net_version",
-        "summary": "chain ID associated with network",
-        "description": "Returns the chain ID associated with the current network.",
+        "summary": "Network ID associated with network",
+        "description": "Returns the network ID associated with the current network.",
         "params": [],
         "result": {
-          "name": "chainID",
-          "description": "chain ID associated with the current network",
+          "name": "networkID",
+          "description": "Network ID associated with the current network",
           "schema": {
-            "title": "chainID",
+            "title": "networkID",
             "type": "string",
-            "pattern": "^0x[a-fA-F\\d]+$"
+            "pattern": "^[\\d]+$"
           }
         }
       },
