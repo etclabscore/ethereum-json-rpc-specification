@@ -26,7 +26,7 @@
     "@open-rpc/generator-client": "^1.10.0",
     "@open-rpc/mock-server": "^1.1.1",
     "@open-rpc/semantic-release-plugin": "^1.0.2",
-    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/exec": "^3.3.5",
     "@semantic-release/git": "^7.0.8",
     "@semantic-release/github": "^5.2.10"
