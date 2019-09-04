@@ -10,7 +10,7 @@ aliases:
   - &save-deps-cache
     key: deps-cache-{{ checksum "package.json" }}
     paths:
-      - ~/ethereum-json-rpc-specification/node_modules
+      - ~/project/node_modules
 
   # -------------------------
   #  ALIASES: Branch Filters
@@ -23,10 +23,9 @@ aliases:
       only:  /^(pull|fix|feat|dependabot)\/.*$/
 
 defaults: &defaults
-  working_directory: ~/ethereum-json-rpc-specification
+  working_directory: ~/project
 
 jobs:
-
   build:
     <<: *defaults
     docker:
@@ -49,8 +48,13 @@ jobs:
           command: |
             curl -sSL "https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v10.15.3-linux-x64/bin/node
             curl https://www.npmjs.com/install.sh | sudo bash
+      - restore_cache: *restore-deps-cache
       - run: npm install
-      - run: npx semantic-release
+      - run: npm run build
+      - run: npm install semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/npm @semantic-release/commit-analyzer @semantic-release/release-notes-generator @qiwi/semantic-release-gh-pages-plugin
+      - run: git checkout package.json package-lock.json
+      - run: ./node_modules/.bin/semantic-release
+      - save_cache: *save-deps-cache
 
 workflows:
   version: 2
