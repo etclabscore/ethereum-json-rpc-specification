@@ -965,6 +965,7 @@
       },
       {
         "name": "eth_submitHashrate",
+        "deprecated": true,
         "summary": "Returns an array of all logs matching a given filter object.",
         "params": [
           {
