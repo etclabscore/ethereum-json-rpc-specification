@@ -945,6 +945,7 @@
       {
         "name": "eth_sendTransaction",
         "summary": "Creates new message call transaction or a contract creation, if the data field contains code.",
+        "deprecated": true,
         "params": [
           {
             "$ref": "#/components/contentDescriptors/Transaction"
