@@ -269,7 +269,7 @@
       },
       {
         "name": "eth_getBlockByNumber",
-        "summary": "Gets a block for a given number salad",
+        "summary": "Gets a block for a given number",
         "params": [
           {
             "$ref": "#/components/contentDescriptors/BlockNumber"
