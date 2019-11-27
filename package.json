@@ -1,8 +1,7 @@
 {
   "name": "@etclabscore/ethereum-json-rpc-specification",
   "version": "0.0.0",
-  "description": "## Introduction",
-  "main": "index.js",
+  "description": "Package containing tools to produce generated artifacts for the ethereum OpenRPC document. Please see the git repository for more information",
   "scripts": {
     "generate-clients": "open-rpc-generator-client",
     "clean": "rm -rf build && mkdir -p build",
