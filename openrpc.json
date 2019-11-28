@@ -105,14 +105,14 @@
       },
       {
         "name": "net_version",
-        "summary": "Network ID associated with network",
+        "summary": "Network identifier associated with network",
         "description": "Returns the network ID associated with the current network.",
         "params": [],
         "result": {
-          "name": "networkID",
+          "name": "networkId",
           "description": "Network ID associated with the current network",
           "schema": {
-            "title": "networkID",
+            "title": "networkId",
             "type": "string",
             "pattern": "^[\\d]+$"
           }
@@ -782,10 +782,9 @@
             "required": true,
             "schema": {
               "title": "storageKeys",
-              "description": "The storage keys of all the storage slots being requested",
+              "description": "A storage key is indexed from the solidity compiler by the order it is declared. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
               "items": {
-                "description": "A storage key is indexed from the solidity compiler by the order it is declared. For mappings it uses the keccak of the mapping key with its position (and recursively for X-dimensional mappings)",
-                "$ref": "#/components/schemas/Integer"
+                "$ref": "#/components/schemas/StorageProofKey"
               }
             }
           },
@@ -845,6 +844,7 @@
         "result": {
           "name": "work",
           "schema": {
+            "title": "getWorkResults",
             "type": "array",
             "items": [
               {
@@ -879,7 +879,8 @@
         "result": {
           "name": "mining",
           "schema": {
-            "description": "Whether of not the client is mining",
+            "title": "isMiningFlag",
+            "description": "Whether or not the client is mining",
             "type": "boolean"
           }
         }
@@ -985,9 +986,9 @@
         ],
         "result": {
           "name": "submitHashRateSuccess",
+          "description": "whether of not submitting went through successfully",
           "schema": {
-            "type": "boolean",
-            "description": "whether of not submitting went through successfully"
+            "type": "boolean"
           }
         }
       },
@@ -1017,8 +1018,7 @@
           "name": "solutionValid",
           "description": "returns true if the provided solution is valid, otherwise false.",
           "schema": {
-            "type": "boolean",
-            "description": "Whether or not the provided solution is valid"
+            "type": "boolean"
           }
         },
         "examples": [
@@ -1056,6 +1056,7 @@
         "result": {
           "name": "syncing",
           "schema": {
+            "title": "isSyncingResult",
             "oneOf": [
               {
                 "description": "An object with sync status data",
@@ -1084,8 +1085,7 @@
                 }
               },
               {
-                "type": "boolean",
-                "description": "The value `false` indicating that syncing is complete"
+                "type": "boolean"
               }
             ]
           }
@@ -1105,9 +1105,9 @@
         ],
         "result": {
           "name": "filterUninstalledSuccess",
+          "description": "returns true if the filter was successfully uninstalled, false otherwise.",
           "schema": {
-            "type": "boolean",
-            "description": "Whether of not the filter was successfully uninstalled"
+            "type": "boolean"
           }
         }
       }
@@ -1123,6 +1123,11 @@
         "AccountProof": {
           "$ref": "#/components/schemas/ProofNodes"
         },
+        "StorageProofKey": {
+          "title": "storageProofKey",
+          "description": "The key used to get the storage slot in its account tree.",
+          "$ref": "#/components/schemas/Integer"
+        },
         "StorageProof": {
           "title": "storageProof",
           "type": "array",
@@ -1132,9 +1137,7 @@
             "description": "Object proving a relationship of a storage value to an account's storageHash.",
             "properties": {
               "key": {
-                "title": "storageProofKey",
-                "description": "The key used to get the storage slot in its account tree",
-                "$ref": "#/components/schemas/Integer"
+                "$ref": "#/components/schemas/StorageProofKey"
               },
               "value": {
                 "title": "storageProofValue",
@@ -1310,6 +1313,7 @@
             },
             "removed": {
               "schema": {
+                "title": "logIsRemoved",
                 "description": "Whether or not the log was orphaned off the main chain",
                 "type": "boolean"
               }
@@ -1318,6 +1322,7 @@
               "type": "array",
               "items": {
                 "topic": {
+                  "title": "topic",
                   "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
                   "$ref": "#/components/schemas/DataWord"
                 }
