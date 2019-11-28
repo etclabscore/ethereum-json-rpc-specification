@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/etclabscore/ethereum-json-rpc-specification#readme",
   "devDependencies": {
-    "@open-rpc/generator-client": "^1.14.1"
+    "@open-rpc/generator-client": "^1.14.2"
   },
   "dependencies": {}
 }
