@@ -1,5 +1,9 @@
 # ethereum-json-rpc-specification
 
+## Overview
+
+This repository is the home of the Ethereum [OpenRPC](spec.open-rpc.org) document that describes the JSON-RPC interface to be implemented by client developers. It contains the tooling and scripts to automate producing artifacts for consuming the JSON-RPC API (docs, clients, etc).
+
 ## Introduction
 
 Both Ethereum client developers and downstream dapp developers lack a formal Ethereum RPC specification. This proposal attempts to standardize such a specification in a way that's versionable, human-readable and machine-readable. It will improve the accuracy of documentation, API, and clients.
@@ -52,4 +56,3 @@ How to contribute, build and release are outlined in [CONTRIBUTING.md](CONTRIBUT
 - https://github.com/etclabscore/ECIPs/issues/16
 - https://github.com/ethereum/EIPs/pull/1901
 - https://github.com/ethereum/EIPs/issues/1902
-
