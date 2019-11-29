@@ -1064,7 +1064,7 @@
           "type": "array",
           "description": "Current block header PoW hash.",
           "items": {
-            "title": "storageProof"
+            "title": "storageProof",
             "type": "object",
             "description": "Object proving a relationship of a storage value to an account's storageHash.",
             "properties": {
@@ -1400,7 +1400,7 @@
             "timestamp": {
               "type": "string",
               "description": "The unix timestamp for when the block was collated"
-            },
+            }
           }
         },
         "Uncle": {
