@@ -892,7 +892,8 @@
       },
       {
         "name": "eth_submitHashrate",
-        "summary": "Returns an array of all logs matching a given filter object.",
+        "deprecated": true,
+        "summary": "Used for submitting mining hashrate.",
         "params": [
           {
             "name": "hashRate",
