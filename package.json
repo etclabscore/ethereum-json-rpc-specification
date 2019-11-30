@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Package containing tools to produce generated artifacts for the ethereum OpenRPC document. Please see the git repository for more information",
   "scripts": {
+    "test": "node bin/test.js",
     "generate-clients": "open-rpc-generator-client",
     "clean": "rm -rf build && mkdir -p build",
     "build": "npm run clean && npm run generate-clients -- --ts-name=@etclabscore/ethereum-json-rpc --rs-name=ethereum-json-rpc -o build/",
@@ -21,7 +22,8 @@
   },
   "homepage": "https://github.com/etclabscore/ethereum-json-rpc-specification#readme",
   "devDependencies": {
-    "@open-rpc/generator-client": "^1.14.2"
+    "@open-rpc/generator-client": "^1.14.2",
+    "@open-rpc/schema-utils-js": "^1.11.6"
   },
   "dependencies": {}
 }
