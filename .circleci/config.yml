@@ -72,16 +72,21 @@ workflows:
     jobs:
       - build:
           filters: *filter-only-semantic-pr
+      - test:
+          filters: *filter-only-semantic-pr
 
   release:
     jobs:
       - build:
+          filters: *filter-only-master
+      - test:
           filters: *filter-only-master
       - hold:
           filters: *filter-only-master
           type: approval
           requires:
             - build
+            - test
       - release:
           filters: *filter-only-master
           requires:
