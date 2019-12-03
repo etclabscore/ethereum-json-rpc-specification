@@ -1477,7 +1477,7 @@
             },
             "blockNumber": {
               "description": "Block number where this transaction was in. null when its pending",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/IntegerOrNull"
             },
             "from": {
               "description": "Address of the sender",
@@ -1508,7 +1508,7 @@
             },
             "transactionIndex": {
               "description": "Integer of the transaction's index position in the block. null when its pending",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/IntegerOrNull"
             },
             "value": {
               "description": "Value of Ether being transferred in Wei",
