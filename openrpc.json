@@ -1543,6 +1543,7 @@
           "$ref": "#/components/schemas/Keccak"
         },
         "KeccakOrPending": {
+          "title": "keccakOrPending",
           "oneOf": [
             {
               "$ref": "#/components/schemas/Keccak"
