@@ -26,5 +26,7 @@
     "@open-rpc/meta-schema": "^1.5.4",
     "@open-rpc/schema-utils-js": "^1.11.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "template-client": "file:../foobar"
+  }
 }
