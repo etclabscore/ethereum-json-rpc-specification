@@ -1294,15 +1294,7 @@
               "type": "boolean"
             },
             "topics": {
-              "title": "LogTopics",
-              "type": "array",
-              "items": {
-                "topic": {
-                  "title": "LogTopic",
-                  "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
-                  "$ref": "#/components/schemas/DataWord"
-                }
-              }
+              "$ref": "#/components/schemas/Topics"
             },
             "transactionHash": {
               "$ref": "#/components/schemas/TransactionHash"
@@ -1311,6 +1303,19 @@
               "$ref": "#/components/schemas/TransactionIndex"
             }
           }
+        },
+        "Topics": {
+          "title": "LogTopics",
+          "description": "Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Topic"
+          }
+        },
+        "Topic": {
+          "title": "topic",
+          "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
+          "$ref": "#/components/schemas/DataWord"
         },
         "TransactionIndex": {
           "title": "transactionIndex",
@@ -1511,10 +1516,12 @@
               "$ref": "#/components/schemas/From"
             },
             "gas": {
+              "title": "transactionGas",
               "type": "string",
               "description": "The gas limit provided by the sender in Wei"
             },
             "gasPrice": {
+              "title": "transactionGasPrice",
               "type": "string",
               "description": "The gas price willing to be paid by the sender in Wei"
             },
@@ -1522,10 +1529,12 @@
               "$ref": "#/components/schemas/TransactionHash"
             },
             "input": {
+              "title": "transactionInput",
               "type": "string",
               "description": "The data field sent with the transaction"
             },
             "nonce": {
+              "title": "transactionNonce",
               "description": "The total number of prior transactions made by the sender",
               "$ref": "#/components/schemas/Nonce"
             },
@@ -1536,18 +1545,22 @@
               "$ref": "#/components/schemas/TransactionIndex"
             },
             "value": {
+              "title": "transactionValue",
               "description": "Value of Ether being transferred in Wei",
               "$ref": "#/components/schemas/Keccak"
             },
             "v": {
+              "title": "transactionSigV",
               "type": "string",
               "description": "ECDSA recovery id"
             },
             "r": {
+              "title": "transactionSigR",
               "type": "string",
               "description": "ECDSA signature r"
             },
             "s": {
+              "title": "transactionSigS",
               "type": "string",
               "description": "ECDSA signature s"
             }
@@ -1718,6 +1731,7 @@
                 "$ref": "#/components/schemas/BlockNumber"
               },
               "address": {
+                "title": "oneOrArrayOfAddresses",
                 "oneOf": [
                   {
                     "$ref": "#/components/schemas/Address"
@@ -1728,11 +1742,7 @@
                 ]
               },
               "topics": {
-                "type": "array",
-                "description": "Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
-                "items": {
-                  "$ref": "#/components/schemas/DataWord"
-                }
+                "$ref": "#/components/schemas/Topics"
               }
             }
           }
