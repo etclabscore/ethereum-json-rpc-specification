@@ -1126,8 +1126,8 @@
         "BlockNumber": {
           "title": "blockNumber",
           "type": "string",
-          "pattern": "^0x[a-fA-F\\d]+$",
-          "description": "The hex representation of the block's height"
+          "description": "The hex representation of the block's height",
+          "$ref": "#/components/schemas/Integer"
         },
         "BlockNumberTag": {
           "title": "blockNumberTag",
@@ -1321,25 +1321,43 @@
             }
           }
         },
+        "BlockNumberOrNull": {
+          "title": "blockNumberOrNull",
+          "description": "The block number or null when its the pending block",
+          "oneOf": [
+            { "$ref": "#/components/schemas/BlockNumber" },
+            { "$ref": "#/components/schemas/Null" }
+          ]
+        },
+        "BlockHashOrNull": {
+          "title": "blockNumberOrNull",
+          "description": "The block hash or null when its the pending block",
+          "$ref": "#/components/schemas/KeccakOrPending"
+        },
+        "NonceOrNull": {
+          "title": "nonceOrNull",
+          "description": "Randomly selected number to satisfy the proof-of-work or null when its the pending block",
+          "oneOf": [
+            { "$ref": "#/components/schemas/Nonce" },
+            { "$ref": "#/components/schemas/Null" }
+          ]
+        },
         "LightBlock": {
           "title": "lightBlock",
           "type": "object",
           "properties": {
             "number": {
-              "description": "The block number or null when its the pending block",
-              "$ref": "#/components/schemas/IntegerOrNull"
+              "$ref": "#/components/schemas/BlockNumberOrNull"
             },
             "hash": {
-              "description": "The block hash or null when its the pending block",
-              "$ref": "#/components/schemas/KeccakOrPending"
+              "$ref": "#/components/schemas/BlockHashOrNull"
             },
             "parentHash": {
               "description": "Hash of the parent block",
               "$ref": "#/components/schemas/Keccak"
             },
             "nonce": {
-              "description": "Randomly selected number to satisfy the proof-of-work or null when its the pending block",
-              "$ref": "#/components/schemas/IntegerOrNull"
+              "$ref": "#/components/schemas/NonceOrNull"
             },
             "sha3Uncles": {
               "description": "Keccak hash of the uncles data in the block",
@@ -1472,12 +1490,10 @@
           ],
           "properties": {
             "blockHash": {
-              "description": "Hash of the block where this transaction was in. null when its pending",
-              "$ref": "#/components/schemas/KeccakOrPending"
+              "$ref": "#/components/schemas/BlockHashOrNull"
             },
             "blockNumber": {
-              "description": "Block number where this transaction was in. null when its pending",
-              "$ref": "#/components/schemas/IntegerOrNull"
+              "$ref": "#/components/schemas/BlockNumberOrNull"
             },
             "from": {
               "description": "Address of the sender",
@@ -1562,8 +1578,7 @@
         "Nonce": {
           "title": "nonce",
           "description": "A number only to be used once",
-          "pattern": "^0x[a-fA-F0-9]+$",
-          "type": "string"
+          "$ref": "#/components/schemas/Integer"
         },
         "Null": {
           "title": "null",
