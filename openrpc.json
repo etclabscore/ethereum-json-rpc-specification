@@ -986,6 +986,7 @@
             "title": "isSyncingResult",
             "oneOf": [
               {
+                "title": "syncingData",
                 "description": "An object with sync status data",
                 "type": "object",
                 "properties": {
@@ -1125,8 +1126,8 @@
         "BlockNumber": {
           "title": "blockNumber",
           "type": "string",
-          "pattern": "^0x[a-fA-F\\d]+$",
-          "description": "The hex representation of the block's height"
+          "description": "The hex representation of the block's height",
+          "$ref": "#/components/schemas/Integer"
         },
         "BlockNumberTag": {
           "title": "blockNumberTag",
@@ -1171,6 +1172,17 @@
             }
           ]
         },
+        "AddressOrNull": {
+          "title": "addressOrNull",
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/Address"
+            },
+            {
+              "$ref": "#/components/schemas/Null"
+            }
+          ]
+        },
         "Receipt": {
           "title": "receipt",
           "type": "object",
@@ -1190,19 +1202,15 @@
           ],
           "properties": {
             "blockHash": {
-              "title": "ReceiptBlockHash",
-              "description": "BlockHash of the block in which the transaction was mined",
               "$ref": "#/components/schemas/BlockHash"
             },
             "blockNumber": {
-              "title": "ReceiptBlockNumber",
-              "description": "BlockNumber of the block in which the transaction was mined",
               "$ref": "#/components/schemas/BlockNumber"
             },
             "contractAddress": {
               "title": "ReceiptContractAddress",
               "description": "The contract address created, if the transaction was a contract creation, otherwise null",
-              "$ref": "#/components/schemas/Address"
+              "$ref": "#/components/schemas/AddressOrNull"
             },
             "cumulativeGasUsed": {
               "title": "ReceiptCumulativeGasUsed",
@@ -1210,9 +1218,7 @@
               "$ref": "#/components/schemas/Integer"
             },
             "from": {
-              "title": "ReceiptFrom",
-              "description": "The sender of the transaction",
-              "$ref": "#/components/schemas/Address"
+              "$ref": "#/components/schemas/From"
             },
             "gasUsed": {
               "title": "ReceiptGasUsed",
@@ -1231,19 +1237,13 @@
               "$ref": "#/components/schemas/BloomFilter"
             },
             "to": {
-              "title": "ReceiptTo",
-              "description": "Destination address of the transaction",
-              "$ref": "#/components/schemas/Address"
+              "$ref": "#/components/schemas/To"
             },
             "transactionHash": {
-              "title": "ReceiptTransactionHash",
-              "description": "Keccak 256 of the transaction",
-              "$ref": "#/components/schemas/Keccak"
+              "$ref": "#/components/schemas/TransactionHash"
             },
             "transactionIndex": {
-              "title": "ReceiptTransactionIndex",
-              "description": "An array of all the logs triggered during the transaction",
-              "$ref": "#/components/schemas/BloomFilter"
+              "$ref": "#/components/schemas/TransactionIndex"
             },
             "postTransactionState": {
               "title": "ReceiptPostTransactionState",
@@ -1273,13 +1273,9 @@
               "$ref": "#/components/schemas/Address"
             },
             "blockHash": {
-              "title": "LogBlockHash",
-              "description": "BlockHash of the block in which the transaction was mined",
               "$ref": "#/components/schemas/BlockHash"
             },
             "blockNumber": {
-              "title": "LogBlockNumber",
-              "description": "BlockNumber of the block in which the transaction was mined",
               "$ref": "#/components/schemas/BlockNumber"
             },
             "data": {
@@ -1293,112 +1289,150 @@
               "$ref": "#/components/schemas/Integer"
             },
             "removed": {
-              "schema": {
-                "title": "logIsRemoved",
-                "description": "Whether or not the log was orphaned off the main chain",
-                "type": "boolean"
-              }
+              "title": "logIsRemoved",
+              "description": "Whether or not the log was orphaned off the main chain",
+              "type": "boolean"
             },
             "topics": {
-              "title": "LogTopics",
-              "type": "array",
-              "items": {
-                "topic": {
-                  "title": "LogTopic",
-                  "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
-                  "$ref": "#/components/schemas/DataWord"
-                }
-              }
+              "$ref": "#/components/schemas/Topics"
             },
             "transactionHash": {
-              "title": "LogTransactionHash",
-              "description": "The hash of the transaction in which the log occurred",
-              "$ref": "#/components/schemas/Keccak"
+              "$ref": "#/components/schemas/TransactionHash"
             },
             "transactionIndex": {
-              "title": "LogTransactionIndex",
-              "description": "The index of the transaction in which the log occurred",
-              "$ref": "#/components/schemas/Integer"
+              "$ref": "#/components/schemas/TransactionIndex"
             }
           }
+        },
+        "Topics": {
+          "title": "LogTopics",
+          "description": "Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/Topic"
+          }
+        },
+        "Topic": {
+          "title": "topic",
+          "description": "32 Bytes DATA of indexed log arguments. (In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256))",
+          "$ref": "#/components/schemas/DataWord"
+        },
+        "TransactionIndex": {
+          "title": "transactionIndex",
+          "description": "The index of the transaction. null when its pending",
+          "$ref": "#/components/schemas/IntegerOrNull"
+        },
+        "BlockNumberOrNull": {
+          "title": "blockNumberOrNull",
+          "description": "The block number or null when its the pending block",
+          "oneOf": [
+            { "$ref": "#/components/schemas/BlockNumber" },
+            { "$ref": "#/components/schemas/Null" }
+          ]
+        },
+        "BlockHashOrNull": {
+          "title": "blockNumberOrNull",
+          "description": "The block hash or null when its the pending block",
+          "$ref": "#/components/schemas/KeccakOrPending"
+        },
+        "NonceOrNull": {
+          "title": "nonceOrNull",
+          "description": "Randomly selected number to satisfy the proof-of-work or null when its the pending block",
+          "oneOf": [
+            { "$ref": "#/components/schemas/Nonce" },
+            { "$ref": "#/components/schemas/Null" }
+          ]
+        },
+        "From": {
+          "title": "From",
+          "description": "The sender of the transaction",
+          "$ref": "#/components/schemas/Address"
+        },
+        "To": {
+          "title": "To",
+          "description": "Destination address of the transaction. Null if it was a contract create.",
+          "oneOf": [
+            { "$ref": "#/components/schemas/Address" },
+            { "$ref": "#/components/schemas/Null" }
+          ]
         },
         "LightBlock": {
           "title": "lightBlock",
           "type": "object",
           "properties": {
             "number": {
-              "description": "The block number or null when its the pending block",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/BlockNumberOrNull"
             },
             "hash": {
-              "description": "The block hash or null when its the pending block",
-              "$ref": "#/components/schemas/KeccakOrPending"
+              "$ref": "#/components/schemas/BlockHashOrNull"
             },
             "parentHash": {
-              "description": "Hash of the parent block",
-              "$ref": "#/components/schemas/Keccak"
+              "$ref": "#/components/schemas/BlockHash"
             },
             "nonce": {
-              "description": "Randomly selected number to satisfy the proof-of-work or null when its the pending block",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/NonceOrNull"
             },
             "sha3Uncles": {
+              "title": "blockShaUncles",
               "description": "Keccak hash of the uncles data in the block",
               "$ref": "#/components/schemas/Keccak"
             },
             "logsBloom": {
+              "title": "blockLogsBloom",
               "type": "string",
               "description": "The bloom filter for the logs of the block or null when its the pending block",
               "pattern": "^0x[a-fA-F\\d]+$"
             },
             "transactionsRoot": {
+              "title": "blockTransactionsRoot",
               "description": "The root of the transactions trie of the block.",
               "$ref": "#/components/schemas/Keccak"
             },
             "stateRoot": {
+              "title": "blockStateRoot",
               "description": "The root of the final state trie of the block",
               "$ref": "#/components/schemas/Keccak"
             },
             "receiptsRoot": {
+              "title": "blockReceiptsRoot",
               "description": "The root of the receipts trie of the block",
               "$ref": "#/components/schemas/Keccak"
             },
             "miner": {
-              "description": "The address of the beneficiary to whom the mining rewards were given or null when its the pending block",
-              "oneOf": [
-                {
-                  "$ref": "#/components/schemas/Address"
-                },
-                {
-                  "$ref": "#/components/schemas/Null"
-                }
-              ]
+              "$ref": "#/components/schemas/AddressOrNull"
             },
             "difficulty": {
+              "title": "blockDifficulty",
               "type": "string",
               "description": "Integer of the difficulty for this block"
             },
             "totalDifficulty": {
+              "title": "blockTotalDifficulty",
               "description": "Integer of the total difficulty of the chain until this block",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/IntegerOrNull"
             },
             "extraData": {
+              "title": "blockExtraData",
               "type": "string",
               "description": "The 'extra data' field of this block"
             },
             "size": {
+              "title": "blockSize",
               "type": "string",
               "description": "Integer the size of this block in bytes"
             },
             "gasLimit": {
+              "title": "blockGasLimit",
               "type": "string",
               "description": "The maximum gas allowed in this block"
             },
             "gasUsed": {
+              "title": "blockGasUsed",
               "type": "string",
               "description": "The total used gas by all transactions in this block"
             },
             "timestamp": {
+              "title": "blockTimeStamp",
               "type": "string",
               "description": "The unix timestamp for when the block was collated"
             }
@@ -1431,6 +1465,7 @@
           ]
         },
         "Block": {
+          "title": "block",
           "type": "object",
           "allOf": [
             {
@@ -1444,6 +1479,7 @@
               "type": "object",
               "properties": {
                 "transactions": {
+                  "title": "transactionsOrHashes",
                   "description": "Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter",
                   "type": "array",
                   "items": {
@@ -1462,6 +1498,7 @@
           ]
         },
         "Transaction": {
+          "title": "transaction",
           "type": "object",
           "required": [
             "gas",
@@ -1470,22 +1507,21 @@
           ],
           "properties": {
             "blockHash": {
-              "description": "Hash of the block where this transaction was in. null when its pending",
-              "$ref": "#/components/schemas/KeccakOrPending"
+              "$ref": "#/components/schemas/BlockHashOrNull"
             },
             "blockNumber": {
-              "description": "Block number where this transaction was in. null when its pending",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/BlockNumberOrNull"
             },
             "from": {
-              "description": "Address of the sender",
-              "$ref": "#/components/schemas/Address"
+              "$ref": "#/components/schemas/From"
             },
             "gas": {
+              "title": "transactionGas",
               "type": "string",
               "description": "The gas limit provided by the sender in Wei"
             },
             "gasPrice": {
+              "title": "transactionGasPrice",
               "type": "string",
               "description": "The gas price willing to be paid by the sender in Wei"
             },
@@ -1493,34 +1529,38 @@
               "$ref": "#/components/schemas/TransactionHash"
             },
             "input": {
+              "title": "transactionInput",
               "type": "string",
               "description": "The data field sent with the transaction"
             },
             "nonce": {
+              "title": "transactionNonce",
               "description": "The total number of prior transactions made by the sender",
               "$ref": "#/components/schemas/Nonce"
             },
             "to": {
-              "description": "address of the receiver. null when its a contract creation transaction",
-              "$ref": "#/components/schemas/Address"
+              "$ref": "#/components/schemas/To"
             },
             "transactionIndex": {
-              "description": "Integer of the transaction's index position in the block. null when its pending",
-              "$ref": "#/components/schemas/IntOrPending"
+              "$ref": "#/components/schemas/TransactionIndex"
             },
             "value": {
+              "title": "transactionValue",
               "description": "Value of Ether being transferred in Wei",
               "$ref": "#/components/schemas/Keccak"
             },
             "v": {
+              "title": "transactionSigV",
               "type": "string",
               "description": "ECDSA recovery id"
             },
             "r": {
+              "title": "transactionSigR",
               "type": "string",
               "description": "ECDSA signature r"
             },
             "s": {
+              "title": "transactionSigS",
               "type": "string",
               "description": "ECDSA signature s"
             }
@@ -1535,11 +1575,13 @@
           }
         },
         "TransactionHash": {
+          "title": "transactionHash",
           "type": "string",
           "description": "Keccak 256 Hash of the RLP encoding of a transaction",
           "$ref": "#/components/schemas/Keccak"
         },
         "KeccakOrPending": {
+          "title": "keccakOrPending",
           "oneOf": [
             {
               "$ref": "#/components/schemas/Keccak"
@@ -1549,50 +1591,55 @@
             }
           ]
         },
-        "IntOrPending": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/Integer"
-            },
-            {
-              "$ref": "#/components/schemas/Null"
-            }
-          ]
-        },
         "Keccak": {
+          "title": "keccak",
           "type": "string",
           "description": "Hex representation of a Keccak 256 hash",
           "pattern": "^0x[a-fA-F\\d]{64}$"
         },
         "Nonce": {
+          "title": "nonce",
           "description": "A number only to be used once",
-          "pattern": "^0x[a-fA-F0-9]+$",
-          "type": "string"
+          "$ref": "#/components/schemas/Integer"
         },
         "Null": {
+          "title": "null",
           "type": "null",
           "description": "Null"
         },
         "Integer": {
+          "title": "integer",
           "type": "string",
           "pattern": "^0x[a-fA-F0-9]+$",
           "description": "Hex representation of the integer"
         },
         "Address": {
+          "title": "address",
           "type": "string",
           "pattern": "^0x[a-fA-F\\d]{40}$"
         },
+        "Addresses": {
+          "title": "addresses",
+          "type": "array",
+          "description": "List of contract addresses from which to monitor events",
+          "items": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
         "Position": {
+          "title": "position",
           "type": "string",
           "description": "Hex representation of the storage slot where the variable exists",
           "pattern": "^0x([a-fA-F0-9]?)+$"
         },
         "DataWord": {
+          "title": "dataWord",
           "type": "string",
           "description": "Hex representation of a 256 bit unit of data",
           "pattern": "^0x([a-fA-F\\d]{64})?$"
         },
         "Bytes": {
+          "title": "bytes",
           "type": "string",
           "description": "Hex representation of a variable length byte array",
           "pattern": "^0x([a-fA-F0-9]?)+$"
@@ -1612,8 +1659,7 @@
           "description": "JSON Null value",
           "summary": "Null value",
           "schema": {
-            "type": "null",
-            "description": "Null value"
+            "$ref": "#/components/schemas/Null"
           }
         },
         "Signature": {
@@ -1621,7 +1667,9 @@
           "summary": "The signature.",
           "required": true,
           "schema": {
-            "$ref": "#/components/schemas/Bytes",
+            "title": "signatureBytes",
+            "type": "string",
+            "description": "Hex representation of byte array between 2 and 65 chars long",
             "pattern": "0x^([A-Fa-f0-9]{2}){65}$"
           }
         },
@@ -1672,40 +1720,29 @@
           "name": "filter",
           "required": true,
           "schema": {
+            "title": "filter",
             "type": "object",
             "description": "A filter used to monitor the blockchain for log/events",
             "properties": {
               "fromBlock": {
-                "description": "Block from which to begin filtering events",
                 "$ref": "#/components/schemas/BlockNumber"
               },
               "toBlock": {
-                "description": "Block from which to end filtering events",
                 "$ref": "#/components/schemas/BlockNumber"
               },
               "address": {
+                "title": "oneOrArrayOfAddresses",
                 "oneOf": [
                   {
-                    "type": "string",
-                    "description": "Address of the contract from which to monitor events",
                     "$ref": "#/components/schemas/Address"
                   },
                   {
-                    "type": "array",
-                    "description": "List of contract addresses from which to monitor events",
-                    "items": {
-                      "$ref": "#/components/schemas/Address"
-                    }
+                    "$ref": "#/components/schemas/Addresses"
                   }
                 ]
               },
               "topics": {
-                "type": "array",
-                "description": "Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with 'or' options",
-                "items": {
-                  "description": "Indexable 32 bytes piece of data (made from the event's function signature in solidity)",
-                  "$ref": "#/components/schemas/DataWord"
-                }
+                "$ref": "#/components/schemas/Topics"
               }
             }
           }
@@ -1751,8 +1788,7 @@
         "FilterId": {
           "name": "filterId",
           "schema": {
-            "description": "The filter ID for use in `eth_getFilterChanges`",
-            "$ref": "#/components/schemas/Integer"
+            "$ref": "#/components/schemas/FilterId"
           }
         },
         "BlockNumber": {
