@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository is the home of the Ethereum [OpenRPC](spec.open-rpc.org) document that describes the JSON-RPC interface to be implemented by client developers. It contains the tooling and scripts to automate producing artifacts for consuming the JSON-RPC API (docs, clients, etc).
+This repository is the home of the Ethereum [OpenRPC](https://spec.open-rpc.org) document that describes the JSON-RPC interface to be implemented by client developers. It contains the tooling and scripts to automate producing artifacts for consuming the JSON-RPC API (docs, clients, etc).
 
 ## Introduction
 
