@@ -26,6 +26,11 @@ The clients are generated from the **OpenRPC Document** `openrpc.json` in this r
 npm install @etclabscore/ethereum-json-rpc --save
 ```
 
+#### Usage:
+
+![ethrpc_demo](https://user-images.githubusercontent.com/364566/71329877-49570200-24de-11ea-8fd6-eced0ecdaded.gif)
+
+
 ### Rust
 
 Add this to your Cargo.toml:
