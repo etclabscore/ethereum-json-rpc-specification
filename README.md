@@ -16,6 +16,11 @@ Much of Ethereums effectiveness as an enterprise-grade application platform depe
 
 You can view the specification in documentation form [here](https://playground.open-rpc.org/?schemaUrl=https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json&uiSchema[appBar][ui:input]=false) or the raw **OpenRPC Document** [here](openrpc.json).
 
+#### Preview
+
+![eth_rpc_playground_docs_demo_eth_rpc](https://user-images.githubusercontent.com/364566/71375336-ba47f980-2572-11ea-9cd5-38c5149c485a.gif)
+
+
 ## Clients
 
 The clients are generated from the **OpenRPC Document** `openrpc.json` in this repository, and can be used as an alternative to web3.js or ethers.js but for various languages:
