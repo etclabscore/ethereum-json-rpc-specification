@@ -848,7 +848,7 @@
       },
       {
         "name": "eth_pendingTransactions",
-        "summary": "Returns the pending transactions list",
+        "summary": "Returns the transactions that are pending in the transaction pool and have a from address that is one of the accounts this node manages.",
         "params": [],
         "result": {
           "name": "pendingTransactions",
