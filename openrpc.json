@@ -1483,6 +1483,7 @@
                   "description": "Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter",
                   "type": "array",
                   "items": {
+                    "title": "transactionOrTransactionHash",
                     "oneOf": [
                       {
                         "$ref": "#/components/schemas/Transaction"
@@ -1677,6 +1678,7 @@
           "name": "gasPrice",
           "required": true,
           "schema": {
+            "title": "gasPriceResult",
             "description": "Integer of the current gas price",
             "$ref": "#/components/schemas/Integer"
           }
@@ -1692,6 +1694,7 @@
           "name": "transactionResult",
           "description": "Returns a transaction or null",
           "schema": {
+            "title": "TransactionOrNull",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/Transaction"
@@ -1779,6 +1782,7 @@
           "name": "logs",
           "description": "An array of all logs matching filter with given id.",
           "schema": {
+            "title": "setOfLogs",
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Log"
@@ -1795,6 +1799,7 @@
           "name": "blockNumber",
           "required": true,
           "schema": {
+            "title": "blockNumberOrTag",
             "oneOf": [
               {
                 "$ref": "#/components/schemas/BlockNumber"
