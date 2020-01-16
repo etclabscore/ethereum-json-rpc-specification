@@ -1466,7 +1466,6 @@
         },
         "Block": {
           "title": "block",
-          "type": "object",
           "allOf": [
             {
               "$ref": "#/components/schemas/LightBlock"
