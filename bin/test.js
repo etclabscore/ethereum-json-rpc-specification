@@ -5,7 +5,7 @@ let openrpcDocument = "";
 try {
   openrpcDocument = readFileSync(process.cwd() + "/openrpc.json", "utf8");
 } catch(e) {
-  console.error(e)
+  console.error(e);
   fail("Could not find open rpc document");
 }
 
@@ -19,9 +19,13 @@ try {
 
 const isValid = validateOpenRPCDocument(openrpcDocumentObject);
 
-if (isValid === true) { process.exit(0); }
+if (isValid !== true) {
+  fail(isValid);
+}
 
-fail(isValid);
+// Check that each schema has a name set
+
+process.exit(0);
 
 
 function fail(msg) {
