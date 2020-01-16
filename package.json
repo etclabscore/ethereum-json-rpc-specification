@@ -8,8 +8,8 @@
     "clean": "rm -rf build && mkdir -p build",
     "build": "npm run clean && npm run generate-clients -- --ts-name=@etclabscore/ethereum-json-rpc --rs-name=ethereum-json-rpc -o build/",
     "publish": "npm run publish:typescript && npm run publish:rust",
-    "publish:typescript": "cd build/typescript && npm publish --access=public",
-    "publish:rust": "cd build/rust && cargo package && cargo publish --token $CARGO_TOKEN"
+    "publish:typescript": "cd build/typescript && npm install && npm run build && npm publish --access=public",
+    "publish:rust": "cd build/rust && cargo build && cargo package && cargo publish --token $CARGO_TOKEN"
   },
   "repository": {
     "type": "git",
