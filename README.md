@@ -42,7 +42,7 @@ Add this to your Cargo.toml:
 
 ```
 [dependencies]
-ethereum-json-rpc = "0.0.0-development"
+ethereum-json-rpc = "*"
 ```
 
 ## Documentation
