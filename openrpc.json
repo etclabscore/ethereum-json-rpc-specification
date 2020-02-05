@@ -7,6 +7,10 @@
       "license": {
         "name": "Apache 2.0",
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+      },
+      "contact": {
+        "name": "Github Repository",
+        "url": "https://github.com/etclabscore/ethereum-json-rpc-specification"
       }
     },
     "methods": [
