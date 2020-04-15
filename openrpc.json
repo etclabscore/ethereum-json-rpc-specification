@@ -610,7 +610,7 @@
       "result": {
         "name": "uncle",
         "schema": {
-          "$ref": "#/components/schemas/UncleOrNull"
+          "$ref": "#/components/schemas/BlockOrNull"
         }
       }
     },
@@ -637,9 +637,9 @@
       ],
       "result": {
         "name": "uncleResult",
-        "description": "returns an uncle or null",
+        "description": "returns an uncle block or null",
         "schema": {
-          "$ref": "#/components/schemas/UncleOrNull"
+          "$ref": "#/components/schemas/BlockOrNull"
         }
       },
       "examples": [
@@ -1161,17 +1161,6 @@
           }
         ]
       },
-      "UncleOrNull": {
-        "title": "uncleOrNull",
-        "oneOf": [
-          {
-            "$ref": "#/components/schemas/Uncle"
-          },
-          {
-            "$ref": "#/components/schemas/Null"
-          }
-        ]
-      },
       "AddressOrNull": {
         "title": "addressOrNull",
         "oneOf": [
@@ -1368,8 +1357,9 @@
           }
         ]
       },
-      "LightBlock": {
-        "title": "lightBlock",
+      "Block": {
+        "title": "Block",
+        "description": "The Block is the collection of relevant pieces of information (known as the block header), together with information corresponding to the comprised transactions, and a set of other block headers that are known to have a parent equal to the present block’s parent’s parent.",
         "type": "object",
         "properties": {
           "number": {
@@ -1447,68 +1437,34 @@
             "title": "blockTimeStamp",
             "type": "string",
             "description": "The unix timestamp for when the block was collated"
+          },
+          "transactions": {
+            "title": "transactionsOrHashes",
+            "description": "Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter",
+            "type": "array",
+            "items": {
+              "title": "transactionOrTransactionHash",
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Transaction"
+                },
+                {
+                  "$ref": "#/components/schemas/TransactionHash"
+                }
+              ]
+            }
+          },
+          "uncles": {
+            "title": "uncleHashes",
+            "description": "Array of uncle hashes",
+            "type": "array",
+            "items": {
+              "title": "uncleHash",
+              "description": "Block hash of the RLP encoding of an uncle block",
+              "$ref": "#/components/schemas/Keccak"
+            }
           }
         }
-      },
-      "Uncle": {
-        "title": "uncle",
-        "type": "object",
-        "description": "Orphaned blocks that can be included in the chain but at a lower block reward. NOTE: An uncle doesn’t contain individual transactions.",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/LightBlock"
-          },
-          {
-            "title": "uncleData",
-            "type": "object",
-            "properties": {
-              "uncles": {
-                "title": "uncleHashes",
-                "description": "Array of uncle hashes",
-                "type": "array",
-                "items": {
-                  "title": "uncleHash",
-                  "description": "Block hash of the RLP encoding of an uncle block",
-                  "$ref": "#/components/schemas/Keccak"
-                }
-              }
-            }
-          }
-        ]
-      },
-      "Block": {
-        "title": "block",
-        "type": "object",
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/LightBlock"
-          },
-          {
-            "$ref": "#/components/schemas/Uncle"
-          },
-          {
-            "title": "blockData",
-            "type": "object",
-            "properties": {
-              "transactions": {
-                "title": "transactionsOrHashes",
-                "description": "Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter",
-                "type": "array",
-                "items": {
-                  "title": "transactionOrTransactionHash",
-                  "oneOf": [
-                    {
-                      "$ref": "#/components/schemas/Transaction"
-                    },
-                    {
-                      "$ref": "#/components/schemas/TransactionHash"
-                    }
-                  ]
-                }
-              }
-            }
-          }
-        ]
       },
       "Transaction": {
         "title": "transaction",
