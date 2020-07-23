@@ -24,6 +24,6 @@
   "devDependencies": {
     "@open-rpc/generator-client": "^1.14.6",
     "@open-rpc/meta-schema": "^1.10.2",
-    "@open-rpc/schema-utils-js": "^1.13.0"
+    "@open-rpc/schema-utils-js": "^1.13.4"
   }
 }
