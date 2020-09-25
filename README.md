@@ -1,5 +1,7 @@
 # ethereum-json-rpc-specification
 
+[View the Documentation](https://playground.open-rpc.org/?uiSchema[appBar][ui:splitView]=false&schemaUrl=https://raw.githubusercontent.com/etclabscore/ethereum-json-rpc-specification/master/openrpc.json&uiSchema[appBar][ui:input]=false).
+
 ## Overview
 
 This repository is the home of the Ethereum [OpenRPC](https://spec.open-rpc.org) document that describes the JSON-RPC interface to be implemented by client developers. It contains the tooling and scripts to automate producing artifacts for consuming the JSON-RPC API (docs, clients, etc).
