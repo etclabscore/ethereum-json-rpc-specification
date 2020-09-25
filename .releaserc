@@ -5,8 +5,7 @@
         "@semantic-release/changelog",
         "@open-rpc/semantic-release-plugin",
         "@semantic-release/git",
-        "@semantic-release/github",
-        "@qiwi/semantic-release-gh-pages-plugin"
+        "@semantic-release/github"
     ],
     "prepare": [
         "@semantic-release/changelog",
