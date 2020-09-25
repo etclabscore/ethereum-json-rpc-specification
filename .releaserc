@@ -1,10 +1,18 @@
 {
     "tagFormat": "${version}",
     "branch": "master",
+    "plugins": [
+        "@semantic-release/changelog",
+        "@semantic-release/git",
+        "@semantic-release/github",
+        "@open-rpc/semantic-release-plugin",
+        "@qiwi/semantic-release-gh-pages-plugin"
+    ],
     "verifyConditions": [
         "@semantic-release/changelog",
         "@semantic-release/git",
-        "@semantic-release/github"
+        "@semantic-release/github",
+        "@open-rpc/semantic-release-plugin"
     ],
     "prepare": [
         "@semantic-release/changelog",
