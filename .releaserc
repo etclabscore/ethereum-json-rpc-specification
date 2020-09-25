@@ -3,7 +3,6 @@
     "branch": "master",
     "verifyConditions": [
         "@semantic-release/changelog",
-        "@open-rpc/semantic-release-plugin",
         "@semantic-release/git",
         "@semantic-release/github"
     ],
