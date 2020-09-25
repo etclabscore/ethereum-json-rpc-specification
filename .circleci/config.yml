@@ -51,7 +51,7 @@ jobs:
   release:
     <<: *defaults
     docker:
-      - image: circleci/rust:1.35-stretch
+      - image: circleci/rust:1.46-stretch
     steps:
       - checkout
       - run:
