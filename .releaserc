@@ -5,7 +5,8 @@
         "@semantic-release/changelog",
         "@open-rpc/semantic-release-plugin",
         "@semantic-release/git",
-        "@semantic-release/github"
+        "@semantic-release/github",
+        "@qiwi/semantic-release-gh-pages-plugin"
     ],
     "prepare": [
         "@semantic-release/changelog",
@@ -18,7 +19,14 @@
                 "publishCmd": "./publish.sh"
             }
         ],
-        "@semantic-release/github"
+        "@semantic-release/github",
+        {
+            "path": "@qiwi/semantic-release-gh-pages-plugin",
+            "msg": "deploy: new sig.tools gh-pages release",
+            "src": "build/docs/gatsby/build",
+            "branch": "gh-pages",
+            "pullTagsBranch": ""
+        }
     ],
     "success": [
         "@semantic-release/github"

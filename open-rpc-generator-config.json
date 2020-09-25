@@ -1,0 +1,21 @@
+{
+    "openrpcDocument": "openrpc.json",
+    "outDir": "build",
+    "components": [
+        {
+            "type": "client",
+            "name": "@etclabscore/ethereum-json-rpc",
+            "language": "typescript"
+        },
+        {
+            "type": "client",
+            "name": "ethereum-json-rpc",
+            "language": "rust"
+        },
+        {
+            "type": "docs",
+            "name": "ethereum-json-rpc-specification-website",
+            "language": "gatsby"
+        }
+    ]
+}
