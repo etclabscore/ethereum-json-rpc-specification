@@ -29,7 +29,7 @@
         {
             "path": "@qiwi/semantic-release-gh-pages-plugin",
             "msg": "deploy: new sig.tools gh-pages release",
-            "src": "build/docs/gatsby/build",
+            "src": "build/docs/gatsby/public",
             "branch": "gh-pages",
             "pullTagsBranch": ""
         }
