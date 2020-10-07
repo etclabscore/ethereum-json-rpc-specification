@@ -391,7 +391,7 @@
     },
     {
       "name": "eth_getRawTransactionByBlockHashAndIndex",
-      "summary": "Returns raw transaction data of a transaction with the given hash.",
+      "summary": "Returns raw transaction data of a transaction with the block hash and index of which it was mined.",
       "params": [
         {
           "$ref": "#/components/contentDescriptors/BlockHash"
@@ -415,7 +415,7 @@
     },
     {
       "name": "eth_getRawTransactionByBlockNumberAndIndex",
-      "summary": "Returns raw transaction data of a transaction with the given hash.",
+      "summary": "Returns raw transaction data of a transaction with the block number and index of which it was mined.",
       "params": [
         {
           "$ref": "#/components/contentDescriptors/BlockNumber"
@@ -511,7 +511,7 @@
     },
     {
       "name": "eth_getTransactionByBlockNumberAndIndex",
-      "summary": "Returns the information about a transaction requested by the block hash and index of which it was mined.",
+      "summary": "Returns the information about a transaction requested by the block number and index of which it was mined.",
       "params": [
         {
           "$ref": "#/components/contentDescriptors/BlockNumber"
