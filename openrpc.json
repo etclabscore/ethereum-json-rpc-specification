@@ -1049,7 +1049,6 @@
     "schemas": {
       "ProofNode": {
         "title": "proofNode",
-        "type": "string",
         "description": "An individual node used to prove a path down a merkle-patricia-tree",
         "$ref": "#/components/schemas/Bytes"
       },
