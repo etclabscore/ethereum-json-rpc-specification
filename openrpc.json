@@ -733,7 +733,7 @@
                   "$ref": "#/components/schemas/Address"
                 },
                 "accountProof": {
-                  "$ref": "#/components/schemas/AccountProof"
+                  "$ref": "#/components/schemas/ProofNodes"
                 },
                 "balance": {
                   "title": "proofAccountBalance",
@@ -1052,9 +1052,6 @@
         "type": "string",
         "description": "An individual node used to prove a path down a merkle-patricia-tree",
         "$ref": "#/components/schemas/Bytes"
-      },
-      "AccountProof": {
-        "$ref": "#/components/schemas/ProofNodes"
       },
       "StorageProofKey": {
         "title": "storageProofKey",
